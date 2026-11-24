@@ -1,0 +1,28 @@
+[package]
+name = "k535"
+version = "0.2.0"
+edition = "2021"
+description = "Control de iluminacion RGB del teclado Redragon K535-KB (Mitra) en Linux"
+license = "GPL-3.0-or-later"
+readme = "../README.md"
+
+[lib]
+name = "k535"
+path = "src/lib.rs"
+
+[[bin]]
+name = "k535ctl"
+path = "src/bin/k535ctl.rs"
+
+[[bin]]
+name = "k535-gui"
+path = "src/bin/k535-gui.rs"
+
+[dependencies]
+libc = "0.2"
+gtk = { package = "gtk4", version = "0.11", features = ["v4_10", "v4_12"] }
+
+[profile.release]
+opt-level = 2
+lto = "thin"
+strip = true

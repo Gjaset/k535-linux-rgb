@@ -1,0 +1,21 @@
+# Redragon K535-KB ("Mitra") - interfaz de fabricante para control RGB
+#
+# El teclado expone dos interfaces HID:
+#   interfaz 0 -> teclado boot (8 bytes)
+#   interfaz 1 -> canal de control de LEDs (64 bytes, informe de 64 B)
+#
+# Solo la interfaz 1 se usa para escribir.
+#
+# idVendor=0c45 idProduct=5004  (Microdia / SONiX Redragon Mitra RGB)
+#
+# Por que ENV{} y no ATTRS{}: los atributos idVendor/idProduct viven en el
+# dispositivo USB y bInterfaceNumber en la interface HID, que son padres
+# distintos; udev exige que todas las claves ATTRS{} de una misma regla
+# coincidan en el MISMO padre.  Las propiedades USB (ID_VENDOR_ID,
+# ID_MODEL_ID, ID_USB_INTERFACE_NUM) si estan en el propio nodo hidraw.
+#
+# El "import" se hace aqui para no depender del orden de lectura de reglas.
+# El tag "uaccess" lo usa systemd para dar acceso al usuario de la sesion
+# grafica activa (logind), sin necesidad de ser root.
+
+SUBSYSTEM=="hidraw", IMPORT{builtin}="usb_id", ENV{ID_VENDOR_ID}=="0c45", ENV{ID_MODEL_ID}=="5004", ENV{ID_USB_INTERFACE_NUM}=="01", MODE="0660", GROUP="input", TAG+="uaccess", SYMLINK+="redragon-k535"

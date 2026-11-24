@@ -1,0 +1,14 @@
+# Archivos extraidos del instalador del fabricante (software propietario)
+/extract/
+/tools/
+/wineprefix/
+/setup.log
+
+# Binarios compilados y artefactos de construccion
+/k535ctl
+/rust/target/
+
+# Varios
+__pycache__/
+*.pyc
+*.swp

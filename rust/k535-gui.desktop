@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Redragon K535 RGB
+GenericName=Control de iluminación del teclado
+Comment=Perfiles, efectos y color por tecla del teclado Redragon K535-KB (Mitra)
+Exec=k535-gui
+Icon=input-keyboard
+Terminal=false
+Categories=Utility;Settings;HardwareSettings;
+Keywords=keyboard;rgb;redragon;mitra;backlight;
+StartupNotify=true
